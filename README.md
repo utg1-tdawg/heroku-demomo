@@ -23,3 +23,9 @@ git push heroku main
 ## Comments
 Without proxying to flask backend, we have to hardcode server's domain (see `fetch`) \
 This makes it troublesome to switch from development to production, vice versa
+
+## With DB
+- Host MongoDB server using Atlas
+- Connect to DB using Python driver. Password is based on role created. See "Database security"
+- (check) Cluster whitelist
+- (dependencies) "pymongo[srv]"
