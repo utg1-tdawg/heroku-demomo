@@ -1,18 +1,23 @@
 import { useState, useEffect } from "react";
 
 function App() {
-  const [apiData, setApiData] = useState(null);
+  const [envData, setEnvData] = useState(null);
+  const [dbData, setDbData] = useState(null);
 
   useEffect(() => {
     fetch("https://heroku-demomo.herokuapp.com/api")
       .then((res) => res.json())
-      .then((data) => setApiData(data["api"]));
+      .then((data) => {
+        setEnvData(data["env"]);
+        setDbData(data["db"]);
+      });
   }, []);
 
   return (
     <div>
       <h1>Hello world</h1>
-      <div>{`Data fetched from api: ${apiData}`}</div>
+      <div>{`Environment variable: ${envData}`}</div>
+      <div>{`DB: ${dbData}`}</div>
     </div>
   );
 }
